@@ -3,9 +3,13 @@ const socketIO = require("socket.io");
 const http = require("http");
 const cors = require("cors");
 const handleSocketEvents = require("./socketHandler");
-
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+  origin: 'https://14-sentences-frontend.vercel.app/',
+};
+app.use(cors(corsOptions));
+
 const server = http.Server(app);
 const io = socketIO(server, {
   cors: {
